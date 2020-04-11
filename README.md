@@ -2,7 +2,7 @@
 [![platform](https://img.shields.io/badge/platform-Android-yellow.svg)](https://www.android.com)
 [![](https://jitpack.io/v/mtjin/DrawView.svg)](https://jitpack.io/#mtjin/DrawView)
 <br>
-draw on View and have some useful functions
+Library that draw on View and have some useful functions
 It is useful for drawing and signature
 
 ## Prerequisites
