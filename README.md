@@ -30,6 +30,8 @@ dependencies {
 
 ## Usage
 
+There is also sample code in this repository.
+
 To change pen color
 ```kotlin
 drawView.setPenColor(Color.parseColor("#D81B60"))
