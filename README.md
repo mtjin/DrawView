@@ -79,6 +79,22 @@ Download File to gallery and get the Uri, it needs WRITE_EXTERNAL_STORAGE permis
  drawView.saveFileDrawLineGetUri()
 ```
 
+save image file second method
+```kotlin
+val bitmap = drawImageView.getBitmap()
+        var outStream: FileOutputStream? = null
+        val sdCard: File = Environment.getExternalStorageDirectory()
+        val dir = File(sdCard.absolutePath + "/DrawApp")
+        dir.mkdirs()
+        val fileName =
+            String.format("%d.jpg", System.currentTimeMillis())
+        val outFile = File(dir, fileName)
+        outStream = FileOutputStream(outFile)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream)
+        outStream.flush()
+        outStream.close()
+```
+
 It can also set by xml
 ```xml
 <com.mtjin.library.DrawView
