@@ -84,7 +84,7 @@ It can also set by xml
 <com.mtjin.library.DrawView
        android:layout_width="wrap_content"
        app:pen_color="#4455B7"
-       app:pen_stroke="#9D3434"
+       app:pen_stroke="30"
        android:layout_height="wrap_content"/>
 ```
 
