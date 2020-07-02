@@ -1,6 +1,5 @@
 package com.mtjin.library
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.ContextWrapper
@@ -118,9 +117,9 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     }
 
     // get DrawLine to File and return Uri
-    @SuppressLint("WrongThread", "SimpleDateFormat")
     fun saveFileDrawLineGetUri(): Uri? {
-        val mTimeStamp: String = SimpleDateFormat("ddMMyyyy_HHmm").format(Date())
+        val mTimeStamp: String =
+            SimpleDateFormat("ddMMyyyy_HHmm", Locale.getDefault()).format(Date())
         val mImageName = "drawView_$mTimeStamp.jpg"
         val wrapper = ContextWrapper(mContext)
         var file = wrapper.getDir("Images", MODE_PRIVATE)
@@ -138,9 +137,9 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     }
 
     // get whole drawView to File and return Uri
-    @SuppressLint("WrongThread", "SimpleDateFormat")
     fun saveFileDrawViewGetUri(): Uri? {
-        val mTimeStamp: String = SimpleDateFormat("ddMMyyyy_HHmm").format(Date())
+        val mTimeStamp: String =
+            SimpleDateFormat("ddMMyyyy_HHmm", Locale.getDefault()).format(Date())
         val mImageName = "drawView_$mTimeStamp.jpg"
         val wrapper = ContextWrapper(mContext)
         var file = wrapper.getDir("Images", MODE_PRIVATE)
@@ -176,6 +175,11 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     // set Pen Stroke Width
     fun setStrokeWidth(penStroke: Float) {
         mPen.setStrokeWidth(penStroke)
+    }
+
+    // get Line pathList
+    fun getPathList(): ArrayList<Pair<Path, Pen>>? {
+        return mPathList
     }
 
 }
