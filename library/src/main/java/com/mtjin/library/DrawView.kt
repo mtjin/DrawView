@@ -11,6 +11,7 @@ import android.util.Pair
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.view.drawToBitmap
+import kotlinx.coroutines.runBlocking
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -27,6 +28,7 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
             : ArrayList<Pair<Path, Pen>>? = null
     private var mRedoList
             : Stack<Pair<Path, Pen>>? = null
+    private var mPointPathList: ArrayList<DrawPoint>? = null
     private var mPointRedoList: Stack<ArrayList<DrawPoint>>? = null
     private var mPointUndoList: Stack<ArrayList<DrawPoint>>? = null
 
@@ -34,6 +36,7 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
         mPen = Pen()
         mPathList = ArrayList()
         mRedoList = Stack()
+        mPointPathList = ArrayList()
         mPointRedoList = Stack()
         mPointUndoList = Stack()
         attrs?.let { initPaint(it) }
@@ -52,16 +55,16 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val X: Float = event.x
         val Y: Float = event.y
-        val pointPathList = ArrayList<DrawPoint>()
+
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 mPath.moveTo(X, Y)
-                pointPathList.add(DrawPoint(X, Y))
+                mPointPathList?.add(DrawPoint(X, Y))
             }
             //draw line
             MotionEvent.ACTION_MOVE -> {
                 mPath.lineTo(X, Y)
-                pointPathList.add(DrawPoint(X, Y))
+                mPointPathList?.add(DrawPoint(X, Y))
             }
             // save history
             MotionEvent.ACTION_UP -> {
@@ -74,7 +77,12 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
                 mPen = Pen()
                 mPen.setPenColor(penColor)
                 mPen.setStrokeWidth(penStrokeWidth)
-                mPointRedoList?.add(pointPathList)
+                val tmpPointList = ArrayList<DrawPoint>()
+                for (point in mPointPathList!!) {
+                    tmpPointList.add(point)
+                }
+                mPointRedoList?.add(tmpPointList)
+                mPointPathList?.clear()
             }
         }
         invalidate()
@@ -130,42 +138,92 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
         return this.drawToBitmap()
     }
 
+    // get DrawLine to File
+    fun saveFileDrawLine() {
+        var file: File
+        runBlocking {
+            val mTimeStamp: String =
+                SimpleDateFormat("ddMMyyyy_HHmm", Locale.getDefault()).format(Date())
+            val mImageName = "drawView_$mTimeStamp.jpg"
+            val wrapper = ContextWrapper(mContext)
+            file = wrapper.getDir("Images", MODE_PRIVATE)
+            file = File(file, "drawView_$mImageName.jpg")
+            try {
+                var stream: OutputStream? = null
+                stream = FileOutputStream(file)
+                getBitmapDrawLine().compress(Bitmap.CompressFormat.JPEG, 100, stream)
+                stream.flush()
+                stream.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    // get whole drawView to File and return Uri
+    fun saveFileDrawView() {
+        var file: File
+        runBlocking {
+            val mTimeStamp: String =
+                SimpleDateFormat("ddMMyyyy_HHmm", Locale.getDefault()).format(Date())
+            val mImageName = "drawView_$mTimeStamp.jpg"
+            val wrapper = ContextWrapper(mContext)
+            file = wrapper.getDir("Images", MODE_PRIVATE)
+            file = File(file, "drawView_$mImageName.jpg")
+            try {
+                var stream: OutputStream? = null
+                stream = FileOutputStream(file)
+                getBitmapDrawLine().compress(Bitmap.CompressFormat.JPEG, 100, stream)
+                stream.flush()
+                stream.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+    }
+
     // get DrawLine to File and return Uri
     fun saveFileDrawLineGetUri(): Uri? {
-        val mTimeStamp: String =
-            SimpleDateFormat("ddMMyyyy_HHmm", Locale.getDefault()).format(Date())
-        val mImageName = "drawView_$mTimeStamp.jpg"
-        val wrapper = ContextWrapper(mContext)
-        var file = wrapper.getDir("Images", MODE_PRIVATE)
-        file = File(file, "drawView_$mImageName.jpg")
-        try {
-            var stream: OutputStream? = null
-            stream = FileOutputStream(file)
-            getBitmapDrawLine().compress(Bitmap.CompressFormat.JPEG, 100, stream)
-            stream.flush()
-            stream.close()
-        } catch (e: IOException) {
-            e.printStackTrace()
+        var file: File
+        runBlocking {
+            val mTimeStamp: String =
+                SimpleDateFormat("ddMMyyyy_HHmm", Locale.getDefault()).format(Date())
+            val mImageName = "drawView_$mTimeStamp.jpg"
+            val wrapper = ContextWrapper(mContext)
+            file = wrapper.getDir("Images", MODE_PRIVATE)
+            file = File(file, "drawView_$mImageName.jpg")
+            try {
+                var stream: OutputStream? = null
+                stream = FileOutputStream(file)
+                getBitmapDrawLine().compress(Bitmap.CompressFormat.JPEG, 100, stream)
+                stream.flush()
+                stream.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
         }
         return Uri.parse(file.absolutePath)
     }
 
     // get whole drawView to File and return Uri
     fun saveFileDrawViewGetUri(): Uri? {
-        val mTimeStamp: String =
-            SimpleDateFormat("ddMMyyyy_HHmm", Locale.getDefault()).format(Date())
-        val mImageName = "drawView_$mTimeStamp.jpg"
-        val wrapper = ContextWrapper(mContext)
-        var file = wrapper.getDir("Images", MODE_PRIVATE)
-        file = File(file, "drawView_$mImageName.jpg")
-        try {
-            var stream: OutputStream? = null
-            stream = FileOutputStream(file)
-            getBitmapDrawLine().compress(Bitmap.CompressFormat.JPEG, 100, stream)
-            stream.flush()
-            stream.close()
-        } catch (e: IOException) {
-            e.printStackTrace()
+        var file: File
+        runBlocking {
+            val mTimeStamp: String =
+                SimpleDateFormat("ddMMyyyy_HHmm", Locale.getDefault()).format(Date())
+            val mImageName = "drawView_$mTimeStamp.jpg"
+            val wrapper = ContextWrapper(mContext)
+            file = wrapper.getDir("Images", MODE_PRIVATE)
+            file = File(file, "drawView_$mImageName.jpg")
+            try {
+                var stream: OutputStream? = null
+                stream = FileOutputStream(file)
+                getBitmapDrawLine().compress(Bitmap.CompressFormat.JPEG, 100, stream)
+                stream.flush()
+                stream.close()
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
         }
         return Uri.parse(file.absolutePath)
     }
@@ -178,6 +236,7 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
             mRedoList?.push(p)
         }
         mPathList?.clear()
+        mPointPathList?.clear()
         mPointRedoList?.clear()
         mPointUndoList?.clear()
         invalidate()
