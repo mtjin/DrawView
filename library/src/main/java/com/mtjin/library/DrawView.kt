@@ -27,11 +27,17 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
             : ArrayList<Pair<Path, Pen>>? = null
     private var mRedoList
             : Stack<Pair<Path, Pen>>? = null
+    private var mPointPathList: ArrayList<DrawPoint>? = null
+    private var mPointRedoList: Stack<ArrayList<DrawPoint>>? = null
+    private var mPointUndoList: Stack<ArrayList<DrawPoint>>? = null
 
     init {
         mPen = Pen()
         mPathList = ArrayList()
         mRedoList = Stack()
+        mPointPathList = ArrayList()
+        mPointRedoList = Stack()
+        mPointUndoList = Stack()
         attrs?.let { initPaint(it) }
     }
 
@@ -49,9 +55,15 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
         val X: Float = event.x
         val Y: Float = event.y
         when (event.action) {
-            MotionEvent.ACTION_DOWN -> mPath.moveTo(X, Y)
+            MotionEvent.ACTION_DOWN -> {
+                mPath.moveTo(X, Y)
+                mPointPathList?.add(DrawPoint(X, Y))
+            }
             //draw line
-            MotionEvent.ACTION_MOVE -> mPath.lineTo(X, Y)
+            MotionEvent.ACTION_MOVE -> {
+                mPath.lineTo(X, Y)
+                mPointPathList?.add(DrawPoint(X, Y))
+            }
             // save history
             MotionEvent.ACTION_UP -> {
                 val pair =
@@ -63,6 +75,8 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
                 mPen = Pen()
                 mPen.setPenColor(penColor)
                 mPen.setStrokeWidth(penStrokeWidth)
+                mPointRedoList?.add(mPointPathList)
+                mPointPathList?.clear()
             }
         }
         invalidate()
@@ -89,6 +103,7 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
         if (mPathList?.size ?: -1 >= 1) {
             mRedoList?.push(mPathList?.get(mPathList!!.size - 1))
             mPathList?.removeAt(mPathList!!.size - 1)
+            mPointUndoList?.push(mPointRedoList?.pop())
             invalidate()
         }
     }
@@ -98,6 +113,7 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
         if (!mRedoList?.empty()!!) {
             mRedoList?.peek()?.let { mPathList?.add(it) }
             mRedoList!!.pop()
+            mPointRedoList?.push(mPointUndoList?.pop())
             invalidate()
         }
     }
@@ -164,6 +180,9 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
             mRedoList?.push(p)
         }
         mPathList?.clear()
+        mPointPathList?.clear()
+        mPointRedoList?.clear()
+        mPointUndoList?.clear()
         invalidate()
     }
 
@@ -177,9 +196,13 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
         mPen.setStrokeWidth(penStroke)
     }
 
-    // get Line pathList
+    // get Line Path List and Pen
     fun getPathList(): ArrayList<Pair<Path, Pen>>? {
         return mPathList
     }
 
+    // get Point(X, Y) List
+    fun getPointList(): Stack<ArrayList<DrawPoint>>? {
+        return mPointRedoList
+    }
 }
