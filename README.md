@@ -72,16 +72,25 @@ imageView.setImageBitmap(bitmap)
 Download File to gallery and get the Uri, it needs WRITE_EXTERNAL_STORAGE permission (drawVie file)
 ```kotlin
  drawView.saveFileDrawViewGetUri()
+ //Only Download
+ saveFileDrawView() 
 ```
 
 Download File to gallery and get the Uri, it needs WRITE_EXTERNAL_STORAGE permission (draw line file , background : whitecolor)
 ```kotlin
  drawView.saveFileDrawLineGetUri()
+ //Only Download
+saveFileDrawLine()
 ```
 
 To get Draw Path List
 ```kotlin
  drawView.getPathList()
+```
+
+To get Draw Point(x,y) List
+```kotlin
+ drawView.getPointList()
 ```
 
 save image file second method
