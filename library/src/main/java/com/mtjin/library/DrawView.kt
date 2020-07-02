@@ -27,7 +27,6 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
             : ArrayList<Pair<Path, Pen>>? = null
     private var mRedoList
             : Stack<Pair<Path, Pen>>? = null
-    private var mPointPathList: ArrayList<DrawPoint>? = null
     private var mPointRedoList: Stack<ArrayList<DrawPoint>>? = null
     private var mPointUndoList: Stack<ArrayList<DrawPoint>>? = null
 
@@ -35,7 +34,6 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
         mPen = Pen()
         mPathList = ArrayList()
         mRedoList = Stack()
-        mPointPathList = ArrayList()
         mPointRedoList = Stack()
         mPointUndoList = Stack()
         attrs?.let { initPaint(it) }
@@ -54,15 +52,16 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val X: Float = event.x
         val Y: Float = event.y
+        val pointPathList = ArrayList<DrawPoint>()
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 mPath.moveTo(X, Y)
-                mPointPathList?.add(DrawPoint(X, Y))
+                pointPathList.add(DrawPoint(X, Y))
             }
             //draw line
             MotionEvent.ACTION_MOVE -> {
                 mPath.lineTo(X, Y)
-                mPointPathList?.add(DrawPoint(X, Y))
+                pointPathList.add(DrawPoint(X, Y))
             }
             // save history
             MotionEvent.ACTION_UP -> {
@@ -75,8 +74,7 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
                 mPen = Pen()
                 mPen.setPenColor(penColor)
                 mPen.setStrokeWidth(penStrokeWidth)
-                mPointRedoList?.add(mPointPathList)
-                mPointPathList?.clear()
+                mPointRedoList?.add(pointPathList)
             }
         }
         invalidate()
@@ -180,7 +178,6 @@ class DrawView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
             mRedoList?.push(p)
         }
         mPathList?.clear()
-        mPointPathList?.clear()
         mPointRedoList?.clear()
         mPointUndoList?.clear()
         invalidate()
