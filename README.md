@@ -79,7 +79,13 @@ Download File to gallery and get the Uri, it needs WRITE_EXTERNAL_STORAGE permis
  drawView.saveFileDrawLineGetUri()
 ```
 
+To get Draw Path List
+```kotlin
+ drawView.getPathList()
+```
+
 save image file second method
+
 ```kotlin
 val bitmap = drawImageView.getBitmap()
         var outStream: FileOutputStream? = null
