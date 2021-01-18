@@ -30,7 +30,7 @@ dependencies {
 
 ## Usage
 
-There is also sample code in this repository.
+There is also sample code in this repository. (https://github.com/mtjin/DrawView/tree/master/app)
 
 To change pen color
 ```kotlin
@@ -119,6 +119,12 @@ It can also set by xml
        android:layout_height="wrap_content"/>
 ```
 
+## Sample
+I also used this library for my app
+Project: https://github.com/mtjin/VisionApp/tree/master/Real_VisionApp/VisionApp
+Sample Video : https://www.youtube.com/watch?v=30-KBgfjirs&feature=youtu.be
+
+
 ## Images
 <img src="https://user-images.githubusercontent.com/37071007/78999801-56c7f300-7b86-11ea-99e6-1a361edd2290.png" align="left" height="400" width="200" >
 <img src="https://user-images.githubusercontent.com/37071007/78999818-61828800-7b86-11ea-8884-e91584522f35.png" align="left" height="400" width="200" >
@@ -129,7 +135,3 @@ It can also set by xml
 <img src="https://user-images.githubusercontent.com/37071007/104920298-ec789480-59da-11eb-9deb-400ca335ae8f.png" align="left" height="400" width="200" >
 <img src="https://user-images.githubusercontent.com/37071007/104920320-f4383900-59da-11eb-9789-f9403abe35df.png" align="left" height="400" width="200" >
 
-
-I also used this library for my app
-Project: https://github.com/mtjin/VisionApp/tree/master/Real_VisionApp/VisionApp
-Sample Video : https://www.youtube.com/watch?v=30-KBgfjirs&feature=youtu.be
