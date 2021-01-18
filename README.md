@@ -126,4 +126,10 @@ It can also set by xml
 <img src="https://user-images.githubusercontent.com/37071007/78999839-6a735980-7b86-11ea-9563-835ace663d6e.png" align="left" height="400" width="200" >
 <img src="https://user-images.githubusercontent.com/37071007/78999843-6cd5b380-7b86-11ea-9848-13482607d284.png" align="left" height="400" width="200" >
 <img src="https://user-images.githubusercontent.com/37071007/78999850-6fd0a400-7b86-11ea-95c8-8f7c8bd842df.png" align="left" height="400" width="200" >
+<img src="https://user-images.githubusercontent.com/37071007/104920298-ec789480-59da-11eb-9deb-400ca335ae8f.png" align="left" height="400" width="200" >
+<img src="https://user-images.githubusercontent.com/37071007/104920320-f4383900-59da-11eb-9789-f9403abe35df.png" align="left" height="400" width="200" >
 
+
+I also used this library for my app
+Project: https://github.com/mtjin/VisionApp/tree/master/Real_VisionApp/VisionApp
+Sample Video : https://www.youtube.com/watch?v=30-KBgfjirs&feature=youtu.be
