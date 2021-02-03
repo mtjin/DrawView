@@ -141,7 +141,7 @@ Sample Video : https://www.youtube.com/watch?v=30-KBgfjirs&feature=youtu.be
 <img src="https://user-images.githubusercontent.com/37071007/104920320-f4383900-59da-11eb-9789-f9403abe35df.png"  height="400" width="200" >
 </div>
 
-## Other My libraries
+## Other My Libraries
 [BorderEditText](https://github.com/mtjin/BorderEditText)
 
 
