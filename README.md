@@ -130,12 +130,42 @@ Sample Video : https://www.youtube.com/watch?v=30-KBgfjirs&feature=youtu.be
 
 
 ## Images
-<img src="https://user-images.githubusercontent.com/37071007/78999801-56c7f300-7b86-11ea-99e6-1a361edd2290.png" align="left" height="400" width="200" >
-<img src="https://user-images.githubusercontent.com/37071007/78999818-61828800-7b86-11ea-8884-e91584522f35.png" align="left" height="400" width="200" >
-<img src="https://user-images.githubusercontent.com/37071007/78999833-66473c00-7b86-11ea-843f-16b2ee59d063.png" align="left" height="400" width="200" >
-<img src="https://user-images.githubusercontent.com/37071007/78999839-6a735980-7b86-11ea-9563-835ace663d6e.png" align="left" height="400" width="200" >
-<img src="https://user-images.githubusercontent.com/37071007/78999843-6cd5b380-7b86-11ea-9848-13482607d284.png" align="left" height="400" width="200" >
-<img src="https://user-images.githubusercontent.com/37071007/78999850-6fd0a400-7b86-11ea-95c8-8f7c8bd842df.png" align="left" height="400" width="200" >
-<img src="https://user-images.githubusercontent.com/37071007/104920298-ec789480-59da-11eb-9deb-400ca335ae8f.png" align="left" height="400" width="200" >
-<img src="https://user-images.githubusercontent.com/37071007/104920320-f4383900-59da-11eb-9789-f9403abe35df.png" align="left" height="400" width="200" >
+<div>
+<img src="https://user-images.githubusercontent.com/37071007/78999801-56c7f300-7b86-11ea-99e6-1a361edd2290.png" height="400" width="200" >
+<img src="https://user-images.githubusercontent.com/37071007/78999818-61828800-7b86-11ea-8884-e91584522f35.png" height="400" width="200" >
+<img src="https://user-images.githubusercontent.com/37071007/78999833-66473c00-7b86-11ea-843f-16b2ee59d063.png" height="400" width="200" >
+<img src="https://user-images.githubusercontent.com/37071007/78999839-6a735980-7b86-11ea-9563-835ace663d6e.png"  height="400" width="200" >
+<img src="https://user-images.githubusercontent.com/37071007/78999843-6cd5b380-7b86-11ea-9848-13482607d284.png"  height="400" width="200" >
+<img src="https://user-images.githubusercontent.com/37071007/78999850-6fd0a400-7b86-11ea-95c8-8f7c8bd842df.png"  height="400" width="200" >
+<img src="https://user-images.githubusercontent.com/37071007/104920298-ec789480-59da-11eb-9deb-400ca335ae8f.png"  height="400" width="200" >
+<img src="https://user-images.githubusercontent.com/37071007/104920320-f4383900-59da-11eb-9789-f9403abe35df.png"  height="400" width="200" >
+</div>
 
+## Other My libraries
+[BorderEditText](https://github.com/mtjin/BorderEditText)
+
+
+## License
+```
+MIT License
+
+Copyright (c) 2021 JackJackE
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
